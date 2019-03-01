@@ -39,8 +39,5 @@ class Artist
     end
   end
 
-  def genres
-    genres = @songs.map {|song| song.genre}
-    @genres = genres.uniq
-  end
+  
 end

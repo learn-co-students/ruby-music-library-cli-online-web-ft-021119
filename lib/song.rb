@@ -5,8 +5,9 @@ class Song
 
   def initialize(name, artist=nil, genre=nil)
     @name = name
-    artist= @artist
-    genre= @genre
+    @genre = genre
+    self.artist = artist if artist
+    self.genre = genre if genre
     #@artist= Artist.add_song(self)
   end
 
@@ -28,18 +29,18 @@ class Song
     instance
   end
 
-
-# #??????
-#   def artist=(artist)
-#     @artist = artist
-#     Artist.add_song(self)
-#   end
+  # def artist(self)
+  #   Artist.add_song
+  # end
 
   def genre
     self.genre = @genre
+    if !Genre.songs include?(self)
+      Genre.songs << self
+    end
   end
 
-  def .find_by_name(name)
+  def self.find_by_name(name)
     self.each do |song|
       if song.name = name
         song
