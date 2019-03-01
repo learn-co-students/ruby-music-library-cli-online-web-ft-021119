@@ -1,4 +1,5 @@
 require_all 'lib/concerns'
+require_relative 'concerns/common'
 
 class Song
   include Common::InstanceMethods
@@ -6,6 +7,9 @@ class Song
   extend Concerns::Findable
   attr_accessor :name
   attr_reader :artist, :genre
+
+  attr_accessor :name, :artist
+  attr_reader :genre
   @@all = []
 
   def initialize(name, artist = "", genre = "")
@@ -27,11 +31,17 @@ class Song
   end
 
   def self.new_from_filename(file)
-    array = file.split(/[.-]/)
-    #array returns [artist, song, genre, .mp3] as strings
-    song = self.create(array[1].strip)
-    # song.artist.class.find_or_create_by_name(array[0].strip)
-    # song.genre.class.find_or_create_by_name(array[2].strip)
+    array = file.split(/[.-]/).each(&:strip!)
+      #array is [artist, song, genre, .mp3] as strings
+    song = Song.new(array[1])
+    song.artist = Artist.find_or_create_by_name(array[0])
+    song.genre = Genre.find_or_create_by_name(array[2])
+    song
+  end
+
+  def self.create_from_filename(file)
+    song = Song.new_from_filename(file)
+    song.save
   end
 
   def self.all
