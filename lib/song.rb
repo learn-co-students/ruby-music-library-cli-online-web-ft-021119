@@ -5,10 +5,9 @@ class Song
 
   def initialize(name, artist=nil, genre=nil)
     @name = name
-    @genre = genre
-    self.artist = artist if artist
-    self.genre = genre if genre
-    #@artist= Artist.add_song(self)
+    self.artist=(artist) if artist
+    self.genre=(genre) if genre
+    save
   end
 
   def save
@@ -29,14 +28,14 @@ class Song
     instance
   end
 
-  # def artist(self)
-  #   Artist.add_song
-  # end
+  def artist=(artist)
+    @artist = artist
+    artist.add_song(self)
+  end
 
-  def genre
-    if !Genre.songs.include?(self)
-      Genre.songs << self
-    end
+  def genre=(genre)
+    @genre = genre
+    self.genre.songs << self unless genre.songs.include?(self)
   end
 
   def self.find_by_name(name)
@@ -44,7 +43,7 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-     self.find_by_name.tap || self.create(name)
+     self.find_by_name(name) || self.create(name)
   end
 
 

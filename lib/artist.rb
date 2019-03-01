@@ -1,7 +1,7 @@
 require 'pry'
 
 class Artist
-  attr_accessor :name, :songs, :genres
+  attr_accessor :name, :songs
 
   @@all = []
 
@@ -18,10 +18,6 @@ class Artist
     @@all
   end
 
-  def self.destroy_all
-    @@all.clear
-  end
-
   def self.create(name)
     instance = self.new(name)
     @@all << instance
@@ -33,11 +29,19 @@ class Artist
   end
 
   def add_song(song)
-    if !song.artist
-      song.artist = self
-      @songs << song
-    end
+    song.artist = self unless song.artist
+    @songs << song unless @songs.include?(song)
   end
 
-  
+  def genres
+    (@songs.map {|song| song.genre}).uniq
+  end
+
+  def self.destroy_all
+    @@all.clear
+  end
+
+
+
+
 end
