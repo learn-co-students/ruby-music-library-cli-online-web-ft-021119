@@ -1,7 +1,7 @@
 require 'pry'
 
 class Artist
-  attr_accessor :name, :songs
+  attr_accessor :name, :songs, :genres
 
   @@all = []
 
@@ -33,6 +33,14 @@ class Artist
   end
 
   def add_song(song)
-    song.artist = self
+    if !song.artist
+      song.artist = self
+      @songs << song
+    end
+  end
+
+  def genres
+    genres = @songs.map {|song| song.genre}
+    @genres = genres.uniq
   end
 end

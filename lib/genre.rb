@@ -1,5 +1,5 @@
 class Genre
-  attr_accessor :name
+  attr_accessor :name, :songs, 
 
   @@all = []
 
@@ -25,5 +25,14 @@ class Genre
     instance = self.new(name)
     @@all << instance
     instance
+  end
+
+  def songs
+    @songs
+  end
+
+  def artists
+    artists = @songs.map {|song| song.artist}
+    artists.uniq
   end
 end
