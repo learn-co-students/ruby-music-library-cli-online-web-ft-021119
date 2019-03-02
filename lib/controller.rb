@@ -24,10 +24,11 @@ class MusicLibraryController
 
   #-----------CLI Methods--------------------
   def list_songs
-    @list = Song.all.sort{|a,b| a.name <=> b.name}
+    @list = Song.all.sort!{|a,b| a.name <=> b.name}
     @list.each_with_index do |song, i|
       puts "#{i+1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
     end
+    @list
   end
 
   def list_artists
@@ -69,18 +70,13 @@ class MusicLibraryController
   end
 
   def play_song
-    list_songs
     puts "Which song number would you like to play?"
-    number = gets.chomp
-    binding.pry
-    if number.to_i == [1..self.list.size]
-      puts "Is it working?"
-      # song = self.list[number.to_i - 1]
-      # puts "Playing #{song.name} by #{song.artist.name}"
-    else
-      "Something is wrong"
+    number = gets.chomp.to_i - 1
+    if (1..Song.all.size).include?(number)
+      Song.all.sort!{|a,b| a.name <=> b.name}
+      song = Song.all[number]
+      puts "Playing #{song.name} by #{song.artist.name}" if song
     end
-
   end
 
 
