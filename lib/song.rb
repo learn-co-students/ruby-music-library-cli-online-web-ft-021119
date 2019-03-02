@@ -31,11 +31,12 @@ class Song
   end
 
   def self.new_from_filename(file)
-    array = file.split(/[.-]/).each(&:strip!)
+    array = file.split(' - ').each(&:strip!)
       #array is [artist, song, genre, .mp3] as strings
     song = Song.new(array[1])
     song.artist = Artist.find_or_create_by_name(array[0])
-    song.genre = Genre.find_or_create_by_name(array[2])
+    song.genre = Genre.find_or_create_by_name(array[2].gsub('.mp3',''))
+
     song
   end
 
