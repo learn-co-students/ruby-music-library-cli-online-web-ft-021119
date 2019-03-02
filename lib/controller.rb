@@ -19,6 +19,7 @@ class MusicLibraryController
       puts ("To quit, type 'exit'.")
       puts ("What would you like to do?")
       @input = gets.chomp.downcase
+      run
     end
   end
 
@@ -76,6 +77,25 @@ class MusicLibraryController
       Song.all.sort!{|a,b| a.name <=> b.name}
       song = Song.all[number]
       puts "Playing #{song.name} by #{song.artist.name}" if song
+    end
+  end
+
+  def run
+    case @input
+    when 'list songs'
+      list_songs
+    when 'list artists'
+      list_artists
+    when 'list genres'
+      list_genres
+    when 'list artist'
+      list_songs_by_artist
+    when 'list genre'
+      list_songs_by_genre
+    when 'play song'
+      play_song
+    else
+      call
     end
   end
 
