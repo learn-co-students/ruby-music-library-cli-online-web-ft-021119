@@ -72,6 +72,7 @@ class MusicLibraryController
     list_songs
     puts "Which song number would you like to play?"
     number = gets.chomp
+    binding.pry
     if number.to_i == [1..self.list.size]
       puts "Is it working?"
       # song = self.list[number.to_i - 1]
