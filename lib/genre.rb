@@ -1,5 +1,9 @@
+require_relative './concerns/findable.rb'
+
 class Genre
   attr_accessor :name, :songs
+  extend Concerns::Findable
+
 
   @@all = []
 
@@ -34,5 +38,5 @@ class Genre
     (@songs.map {|song| song.artist}).uniq
   end
 
-
+#binding.pry
 end
