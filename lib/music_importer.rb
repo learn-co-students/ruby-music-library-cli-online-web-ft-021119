@@ -3,13 +3,18 @@ require 'pry'
 class MusicImporter
   attr_accessor :path, :files
 
-  def initialize(file_path) #"./spec/fixtures/mp3s" ... string
-    @path = file_path
-    #binding.pry
+  def initialize(path)
+    @path = path
   end
 
   def files
     @files = Dir.entries(@path).reject {|i|  i == "." || i == ".." }
+  end
+
+  def import
+    files.each do |filename|
+      Song.create_from_filename(filename)
+    end
   end
 
 
