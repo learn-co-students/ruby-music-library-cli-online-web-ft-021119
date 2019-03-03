@@ -21,9 +21,9 @@ class Artist
   end
 
   def self.create(name)
-    instance = self.new(name)
-    @@all << instance
-    instance
+    artist = self.new(name)
+    artist.save
+    artist
   end
 
   def songs

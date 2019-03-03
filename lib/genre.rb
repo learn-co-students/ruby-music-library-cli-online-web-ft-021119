@@ -25,9 +25,9 @@ class Genre
   end
 
   def self.create(name)
-    instance = self.new(name)
-    @@all << instance
-    instance
+    genre = self.new(name)
+    genre.save
+    genre
   end
 
   def songs
