@@ -5,11 +5,7 @@
 module Concerns::Findable
 
   def find_by_name(name)
-    match = nil
-    self.all.each do |item|
-      item.name == name ? match = item : nil
-    end
-    match
+    self.all.detect {|a| a.name == name}
   end
 
 
