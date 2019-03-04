@@ -31,4 +31,17 @@ class Genre
     @songs
   end
 
+  def artists
+    genre_artists = []
+    # binding.pry
+    self.songs.each do |song|
+      if !genre_artists.include?(song.artist)
+        genre_artists << song.artist
+      end
+    end
+    # binding.pry
+    genre_artists
+  end
+
+
 end
