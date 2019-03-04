@@ -50,5 +50,9 @@ class Genre
     genre_artists
   end
 
+  def self.find_or_create_by_name(name)
+    super || self.create(name)
+  end
+
 
 end
