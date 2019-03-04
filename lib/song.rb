@@ -11,7 +11,6 @@ class Song
       self.artist=(artist_name)
     end
     @name = name
-    @@all = []
     if genre != nil
       self.genre=(genre)
     end
@@ -31,7 +30,7 @@ class Song
 
   def self.create(name)
     song = Song.new(name)
-    song.save
+    @@all << song
     song
   end
 
@@ -48,6 +47,35 @@ class Song
       self.genre.songs << self
     end
   end
+
+  def self.find_by_name(name)
+    # binding.pry
+    matching_song = nil
+    self.all.each do |song|
+      # binding.pry
+      if song.name == name
+        matching_song = song
+        # binding.pry
+      else
+        nil
+      end
+    end
+    matching_song
+  end
+
+
+  def self.find_or_create_by_name(name)
+    # binding.pry
+    # Song.find_by_name(name)  || Song.create(name)
+    song = Song.find_by_name(name)
+    # binding.pry
+    if song == nil
+      Song.create(name)
+    else
+      Song.find_by_name(name)
+    end
+  end
+
 
 
 end
