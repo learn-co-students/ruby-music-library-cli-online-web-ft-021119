@@ -1,0 +1,60 @@
+class Artist
+
+  attr_accessor :name, :save, :create, :songs, :genres
+  @@all = []
+
+  def initialize(name)
+    @name = name
+    @@all << self
+    @songs = []
+    @genres = genres
+  end
+
+  def self.all
+    @@all
+  end
+
+  def self.destroy_all
+    @@all.clear
+
+  end
+
+  def self.save
+    @@all << self
+  end
+
+  def self.create(name)
+    artist = new(name)
+    artist.save
+    artist
+
+  end
+
+  def add_song(song) #, artist = {})
+    # if @songs.include?(song)
+    #    @songs
+    # else
+    #   songs << song
+    #   end
+    #binding.pry
+     @songs << song unless @songs.include?(song)
+      #song.artist = artist unless song.artist.include?(artist)
+    if song.artist == nil
+     song.artist = self
+    end
+   end
+
+   def genres
+       # genres_all = []
+       # @songs.each do |song|
+       #     genres_all << song.genre unless genres_all.include?(song.genre)
+       #  end
+       #  genres_all
+
+        songs.map(&:genre).uniq
+      end
+
+
+
+
+end

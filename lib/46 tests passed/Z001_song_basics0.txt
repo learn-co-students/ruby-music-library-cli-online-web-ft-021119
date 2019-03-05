@@ -1,0 +1,61 @@
+require 'pry'
+class Song
+  attr_accessor :name, :save, :create, :genre, :artist
+  @@all = [] #, @@genre = []
+  #attr_reader :artist
+
+  def initialize(name, artist = nil, genre = nil )
+    @name = name
+    self.artist = artist if artist
+    self.genre = genre if genre
+    @@all << self
+    ####@save = save
+   #@artist = artist
+    # @genre = genre
+
+  end
+
+  def artist=(artist)
+    @artist = artist
+    artist.add_song(self)
+
+  end
+
+  def genre=(genre)
+    @genre = genre
+    genre.add_song(self)
+  end
+
+  def self.all
+    @@all
+  end
+
+  def self.destroy_all
+    @@all.clear
+    # @@all = []
+    #self.all.clear
+  end
+
+  def self.save
+    @@all << self
+  end
+
+  def self.create(name)
+    song = new(name)
+    self.save
+    self
+
+      # def add_song(song)
+      #   @songs << song
+      #   song.artist = self
+      # end
+  end
+
+
+
+
+
+end
+
+
+  #001_song_basics_spec
