@@ -39,11 +39,33 @@ class MusicLibraryController
   end
 
   def list_artists
-    artists = Song.all.collect {|s| s.artist.name}.uniq.sort
-    binding.pry
-    artists.each_with_index {|a| puts "#{index+1}. #{artist}"}
+    # binding.pry
+    artists = Artist.all.collect {|a| a.name}.sort
+    # binding.pry
+    artists.each_with_index {|a, i| puts "#{i+1}. #{a}"}
 
   end
+
+  def list_genres
+    genres = Genre.all.collect {|g| g.name}.sort
+    genres.each_with_index {|g, i| puts "#{i+1}. #{g}"}
+  end
+
+  def list_songs_by_artist
+    puts "Please enter the name of an artist:"
+    gets.chomp
+    # binding.pry
+    artist_songs = []
+    if Artist.all.collect {|a| a.name}.include?(gets)
+      binding.pry
+      
+
+    end
+
+
+  end
+
+
 
 
 end
