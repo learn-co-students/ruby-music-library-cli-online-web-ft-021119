@@ -23,8 +23,47 @@ class MusicLibraryController
 
 
   def list_songs
-    Song.all
+    sorted_list = []
+    song_names = Song.all.collect {|s| s.name}.sort
+    song_names.each do |names|
+      Song.all.each do |songs|
+        if songs.name == names
+          sorted_list << songs
+        end
+      end
+    end
+    sorted_list.each_with_index do |song, index|
+      puts "#{index+1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
+    end
     # binding.pry
+  end
+
+  def list_artists
+    artists = Song.all.collect {|s| s.artist.name}.uniq.sort
+    binding.pry
+    artists.each_with_index {|a| puts "#{index+1}. #{artist}"}
+
+
+
+    # sorted_list = []
+    # artist_names = (Song.all.collect {|s| s.artist.name}).sort
+    # # binding.pry
+    # artist_names.each do |artist|
+    #   # binding.pry
+    #   Song.all.each do |song|
+    #     # binding.pry
+    #       if song.artist.name == artist
+    #         sorted_list << song.artist.name
+    #       end
+    #   end
+    # end
+    # # binding.pry
+    #
+    # sorted_list.uniq.each_with_index do |artist, index|
+    #   # binding.pry
+    #   puts "#{index+1}. #{artist}"
+    # end
+
   end
 
 
