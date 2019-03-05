@@ -43,27 +43,6 @@ class MusicLibraryController
     binding.pry
     artists.each_with_index {|a| puts "#{index+1}. #{artist}"}
 
-
-
-    # sorted_list = []
-    # artist_names = (Song.all.collect {|s| s.artist.name}).sort
-    # # binding.pry
-    # artist_names.each do |artist|
-    #   # binding.pry
-    #   Song.all.each do |song|
-    #     # binding.pry
-    #       if song.artist.name == artist
-    #         sorted_list << song.artist.name
-    #       end
-    #   end
-    # end
-    # # binding.pry
-    #
-    # sorted_list.uniq.each_with_index do |artist, index|
-    #   # binding.pry
-    #   puts "#{index+1}. #{artist}"
-    # end
-
   end
 
 
