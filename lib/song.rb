@@ -78,4 +78,19 @@ class Song
 
 
 
+  def self.new_from_filename(filename)
+    # binding.pry
+    artist = Artist.find_or_create_by_name(filename.split(/\ - |.mp3/)[0])
+    genre = Genre.find_or_create_by_name(filename.split(/\ - |.mp3/)[2])
+    song = filename.split(/\ - |.mp3/)[1]
+    # binding.pry
+    song = Song.new(song, artist, genre)
+
+  end
+
+  def self.create_from_filename(filename)
+    song = self.new_from_filename(filename)
+    song.save
+  end
+
 end
