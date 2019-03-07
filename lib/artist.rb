@@ -11,6 +11,10 @@ attr_accessor :name, :songs, :genre
     @@all
   end
 
+  def genres(genre)
+    songs.genre
+  end
+
   def self.create(name)
     artist = self.new(name)
     artist.save

@@ -10,6 +10,10 @@ attr_reader :artist, :genre
     # save
   end
 
+  def self.all # Class reader
+    @@all
+  end
+
   def artist=(artist)
     @artist = artist
     artist.add_song(self)
@@ -30,10 +34,6 @@ attr_reader :artist, :genre
 
   def save
     @@all << self
-  end
-
-  def self.all # Class reader
-    @@all
   end
 
   def self.destroy_all
