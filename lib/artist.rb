@@ -1,4 +1,6 @@
+# require 'pry'
 class Artist
+extend Concerns::Findable
 attr_accessor :name, :songs, :genre
 @@all = []
 
@@ -9,10 +11,6 @@ attr_accessor :name, :songs, :genre
 
   def self.all # Class reader
     @@all
-  end
-
-  def genres(genre)
-    songs.genre
   end
 
   def self.create(name)
@@ -28,14 +26,20 @@ attr_accessor :name, :songs, :genre
   def add_song(song)
     if !song.artist
         song.artist = self
-    self.songs << song
     end
+    self.songs << song unless songs.include?(song)
   end
+
+  def genres
+    songs.collect{|song| song.genre}.uniq
+  end
+
+  # def self.find_by_name(name)
+  #   @@all.detect{|artist| artist.name == name}
+  # end
 
   def self.destroy_all
       @@all.clear
   end
 
-
-
-  end
+end
