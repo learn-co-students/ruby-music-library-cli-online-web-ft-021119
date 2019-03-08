@@ -32,7 +32,7 @@ extend Concerns::Findable
             list_genre
           when "play song"
             play_song
-        end
+        # end
      end
   end
 
