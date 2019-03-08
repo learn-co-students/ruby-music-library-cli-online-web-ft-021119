@@ -9,7 +9,7 @@ extend Concerns::Findable
   def call
    puts "Welcome to your music library!"
       user_input = ""
-       while user_input != "exit!"
+      #  while user_input != "exit!"
         puts  "What would you like to do?"
         puts  "To list all of your songs, enter 'list songs'."
         puts  "To list all of the artists in your library, enter 'list artists'."
