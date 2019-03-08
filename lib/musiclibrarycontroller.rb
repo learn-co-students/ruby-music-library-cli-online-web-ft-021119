@@ -1,3 +1,4 @@
+require 'pry'
 class MusicLibraryController
 extend Concerns::Findable
 
@@ -7,10 +8,8 @@ extend Concerns::Findable
   end
 
   def call
-   puts "Welcome to your music library!"
-      user_input = ""
-      #  while user_input != "exit!"
-        puts  "What would you like to do?"
+      until @user_input == "exit"
+        puts "Welcome to your music library!"
         puts  "To list all of your songs, enter 'list songs'."
         puts  "To list all of the artists in your library, enter 'list artists'."
         puts  "To list all of the genres in your library, enter 'list genres'."
@@ -18,9 +17,9 @@ extend Concerns::Findable
         puts  "To list all of the songs of a particular genre, enter 'list genre'."
         puts  "To play a song, enter 'play song'."
         puts  "To quit, type 'exit'."
-
-          user_input = gets.chomp
-          case user_input
+        puts  "What would you like to do?"
+        @user_input = gets.chomp.downcase
+          case @user_input
           when "list songs"
             list_songs
           when "list artists"
@@ -33,12 +32,14 @@ extend Concerns::Findable
             list_genre
           when "play song"
             play_song
-        # end
-     end
+          else
+            call
+          end
+      end
   end
 
   def list_songs
-
+    # binding.pry
   end
 
 
