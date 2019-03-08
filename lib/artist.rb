@@ -31,12 +31,8 @@ attr_accessor :name, :songs, :genre
   end
 
   def genres
-    songs.collect{|song| song.genre}.uniq
+    self.songs.collect{|song| song.genre}.uniq
   end
-
-  # def self.find_by_name(name)
-  #   @@all.detect{|artist| artist.name == name}
-  # end
 
   def self.destroy_all
       @@all.clear
