@@ -18,7 +18,7 @@ extend Concerns::Findable
         puts  "To list all of the songs of a particular genre, enter 'list genre'."
         puts  "To play a song, enter 'play song'."
         puts  "To quit, type 'exit'."
-         until user_input == "exit!"
+
           user_input = gets.chomp
           case user_input
           when "list songs"
