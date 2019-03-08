@@ -9,7 +9,7 @@ extend Concerns::Findable
   def call
    puts "Welcome to your music library!"
       user_input = ""
-       while user_input != "exit!"
+      #  while user_input != "exit!"
         puts  "What would you like to do?"
         puts  "To list all of your songs, enter 'list songs'."
         puts  "To list all of the artists in your library, enter 'list artists'."
@@ -18,6 +18,7 @@ extend Concerns::Findable
         puts  "To list all of the songs of a particular genre, enter 'list genre'."
         puts  "To play a song, enter 'play song'."
         puts  "To quit, type 'exit'."
+
           user_input = gets.chomp
           case user_input
           when "list songs"
@@ -32,7 +33,7 @@ extend Concerns::Findable
             list_genre
           when "play song"
             play_song
-        end
+        # end
      end
   end
 
