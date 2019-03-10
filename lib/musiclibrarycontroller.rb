@@ -61,7 +61,8 @@ extend Concerns::Findable
     input = gets.chomp
 
     if artist = Artist.find_by_name(input)
-      
+      artist.songs.sort {|a, b| a.name <=> b.name}.each.with_index(1) do |, i|
+        puts "#{i}. #{genre.name}"
   end
 
   def list_songs_by_genre
