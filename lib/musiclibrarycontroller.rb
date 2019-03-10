@@ -39,16 +39,10 @@ extend Concerns::Findable
   end
 
   def list_songs
-  #  Song.all.sort {|a, b| a.name <=> b.name}.each.with_index do |song, i|
-  #    puts "#{i(song) + 1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
-  #  end
-  # end
-    @all_songs = Song.all
-    all_songs_by_name = @all_songs.sort_by {|song| song.name}
-      all_songs_by_name.collect do |song|
-      puts "#{all_songs_by_name.index(song) + 1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
-      end
-    end
+   Song.all.sort {|a, b| a.name <=> b.name}.each.with_index do |song, i|
+     puts "#{i(song) + 1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
+   end
+  end
 
   def list_artists
    Artist.all.sort {|a, b| a.name <=> b.name}.each.with_index do |name, i|
