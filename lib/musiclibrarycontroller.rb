@@ -43,7 +43,7 @@ extend Concerns::Findable
     all_songs_by_name = @all_songs.sort_by do |song|
       song.name
     end
-    all_songs_by_name.each.with_index do |song, i = 1|
+    all_songs_by_name.each.with_index do |song, i + 1|
       puts "#{i}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
       # binding.pry
     end
