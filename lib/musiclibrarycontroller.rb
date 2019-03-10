@@ -51,7 +51,9 @@ extend Concerns::Findable
   end
 
   def list_genres
-
+    Genre.all.sort {|a, b| a.name <=> b.name}.each.with_index(1) do |genre, i|
+      puts "#{i}. #{genre.name}"
+     end
   end
 
   def list_songs_by_artist
