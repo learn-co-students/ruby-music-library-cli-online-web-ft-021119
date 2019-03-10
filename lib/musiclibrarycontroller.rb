@@ -49,4 +49,3 @@ extend Concerns::Findable
     end
   end
   # Song.all.sort {|a, b| a.name <=> b.name}.each.with_index(1) do |song, i|
-# end
