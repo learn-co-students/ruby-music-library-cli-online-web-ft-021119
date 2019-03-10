@@ -40,7 +40,7 @@ extend Concerns::Findable
 
   def list_songs
     @all_songs = Song.all
-    all_songs_by_name = @all_songs.sort do |song|
+    all_songs_by_name = @all_songs.sort_by do |song|
       song.name
     end
     all_songs_by_name.each.with_index(1) do |song, i|
