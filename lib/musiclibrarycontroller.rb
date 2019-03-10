@@ -57,7 +57,7 @@ extend Concerns::Findable
   end
 
   def list_songs_by_artist
-
+    
   end
 
   def list_songs_by_genre
