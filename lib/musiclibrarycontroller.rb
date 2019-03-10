@@ -44,3 +44,10 @@ extend Concerns::Findable
    end
   end
 end
+#   @all_songs = Song.all
+#   all_songs_by_name = @all_songs.sort_by do |song|
+#     song.name
+#   end
+#   all_songs_by_name.each_with_index do |song, i|
+#     puts "#{i}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
+#     # binding.pry
