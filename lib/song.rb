@@ -22,9 +22,11 @@ attr_reader :artist, :genre
 
   def genre=(genre)
     @genre = genre
-    if !genre.songs.include?(self)
-    genre.songs << self
-    end
+    genre.songs << self unless genre.songs.include?(self)
+    # @genre = genre
+    # if !genre.songs.include?(self)
+    # genre.songs << self
+    # end
   end
 
   def self.create(name)
