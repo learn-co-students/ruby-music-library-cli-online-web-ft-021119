@@ -39,7 +39,7 @@ extend Concerns::Findable
   end
 
   def list_songs
-    Song.new_from_filename
+    self.new_from_filename
   end
 
 
