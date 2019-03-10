@@ -22,7 +22,7 @@ extend Concerns::Findable
           case @user_input
           when "list songs"
             list_songs
-          when "list artists"
+          when "list artist"
             list_artists
           when "list genres"
             list_genres
