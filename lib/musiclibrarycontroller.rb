@@ -50,5 +50,3 @@ extend Concerns::Findable
   #   all_songs_by_name.each_with_index do |song, i|
   #     puts "#{i}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
   #     # binding.pry
-  #   end
-  # end
