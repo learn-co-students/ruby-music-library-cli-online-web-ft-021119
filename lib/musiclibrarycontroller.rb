@@ -79,7 +79,7 @@ extend Concerns::Findable
   end
 
   def play_song
-    puts "Which song number would you like to play?:"
+    puts "Which song number would you like to play?"
     input = gets.chomp.to_i
 
       if (1..Song.all.length).include?(input)
