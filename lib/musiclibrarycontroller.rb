@@ -39,7 +39,7 @@ extend Concerns::Findable
   end
 
   def list_songs
-    Song.all.sort {|a, b| a.name <=> b.name}.each_with_index
+    Song.all.sort {|a, b| a.name <=> b.name}.each_with_index do |song, i|
     # binding.pry
   end
 
