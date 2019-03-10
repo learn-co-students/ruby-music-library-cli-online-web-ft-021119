@@ -39,7 +39,7 @@ extend Concerns::Findable
   end
 
   def list_songs
-    Song.all.sort
+    Song.all.sort {|a, b| a.name <=> b.name}
   end
 
 
