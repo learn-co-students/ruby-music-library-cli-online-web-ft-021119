@@ -44,7 +44,7 @@ extend Concerns::Findable
   #  end
   # end
     @all_songs = Song.all
-    all_songs_by_name = @all_songs.sort_by do {|song| song.name}
+    all_songs_by_name = @all_songs.sort_by {|song| song.name}
       all_songs_by_name.collect do |song|
       puts "#{all_songs_by_name.index(song) + 1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
       end
