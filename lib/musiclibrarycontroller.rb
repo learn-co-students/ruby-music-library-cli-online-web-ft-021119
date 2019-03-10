@@ -60,7 +60,7 @@ extend Concerns::Findable
     puts "Please enter the name of an artist:"
     input = gets.chomp
 
-    
+    if artist == Artist.find_by_name(input)
   end
 
   def list_songs_by_genre
