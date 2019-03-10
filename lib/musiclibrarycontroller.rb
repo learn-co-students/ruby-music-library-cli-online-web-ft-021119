@@ -43,3 +43,4 @@ extend Concerns::Findable
      puts "#{i}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
    end
   end
+end
