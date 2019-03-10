@@ -82,7 +82,7 @@ extend Concerns::Findable
     puts "Which song number would you like to play:"
     input = gets.chomp.to_i
 
-    
+    song = Song.all.sort {|a, b| a.name <=> b.name}.each.with_index(1) do |song, i|
   end
 
 end
