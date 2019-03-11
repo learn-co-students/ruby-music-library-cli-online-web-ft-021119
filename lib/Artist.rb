@@ -1,5 +1,7 @@
+require 'pry'
+
 class Artist
-  attr_accessor :songs
+  # attr_accessor :songs
     @@all = []
     def initialize(name)
       @name = name
@@ -20,6 +22,21 @@ class Artist
       @@all.clear
     end
 
+    def add_song(song)  #  #<Song:0x0000000221c670 @artist=nil, @name="In the Aeroplane Over the Sea">
+      # binding.pry       # Self: #<Artist:0x0000000221c6e8 @name="Neutral Milk Hotel", @songs=[]>
+      if song.artist != nil
+        #do nothing
+      else
+        song.artist = self
+      end
+
+      if self.songs.include?(song)
+        #do nothing
+      else
+        self.songs << song
+      end
+    end
+
     def name
       @name
     end
@@ -30,5 +47,9 @@ class Artist
 
     def save
       @@all << self
+    end
+
+    def songs
+      @songs
     end
 end
