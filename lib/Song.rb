@@ -55,6 +55,16 @@ class Song
     # }
   end
 
+  def self.new_from_filename(filename)
+    # binding.pry
+    song = Song.new(filename.split("-")[1].strip)
+    new_artist = Artist.new(filename.split("-")[0].strip)
+    new_artist.add_song(song)
+    new_artist.save
+    song
+    # binding.pry
+  end
+
   def artist
     @artist
   end
