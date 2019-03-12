@@ -1,8 +1,10 @@
+require 'pry'
 class Genre
-
+  attr_accessor :songs
     @@all = []
     def initialize(name)
       @name = name
+      @songs = []
     end
 
     def self.create(name)
@@ -17,6 +19,15 @@ class Genre
 
     def self.destroy_all
       @@all.clear
+    end
+
+    def artists
+      # binding.pry
+      @artists = []
+      self.songs.collect {|song|
+        @artists << song.artist
+      }
+      @artists.flatten.uniq
     end
 
     def name

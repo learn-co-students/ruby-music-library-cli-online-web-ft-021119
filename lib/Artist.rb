@@ -1,7 +1,7 @@
 require 'pry'
 
 class Artist
-  # attr_accessor :songs
+  # attr_accessor :genres
     @@all = []
     def initialize(name)
       @name = name
@@ -35,6 +35,14 @@ class Artist
       else
         self.songs << song
       end
+    end
+
+    def genres
+      @genres = []
+      self.songs.collect {|song|
+        @genres << song.genre
+      }
+      @genres.flatten.uniq
     end
 
     def name
