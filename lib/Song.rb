@@ -33,29 +33,27 @@ class Song
   end
 
   def self.find_by_name(name)
-    @@all.each {|song|
-      if song.name == name
-        return song
-      end
+    @@all.find {|song|
+      song.name == name
     }
   end
 
   def self.find_or_create_by_name(name)
     # binding.pry
-      # if (self.find_by_name(name) != nil) == true
-      #     #do nothing
-      # else
-      #     new_song = Song.new(name)
-      #     new_song
-      # end
-      @@all.each {|song|
-      # binding.pry
-      if song.name == name
-        return song #Found song by name
+      if (self.find_by_name(name) != nil) == true
+          self.find_by_name(name)#do nothing additional
       else
-        Song.new(name) #Create song by name
+          self.create(name)
       end
-    }
+  # ########
+    #   @@all.each {|song|
+    #   # binding.pry
+    #   if song.name == name
+    #     return song #Found song by name
+    #   else
+    #     Song.new(name) #Create song by name
+    #   end
+    # }
   end
 
   def artist
