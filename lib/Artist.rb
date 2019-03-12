@@ -1,8 +1,7 @@
 require 'pry'
-extend Concerns::Findable
 
 class Artist
-  # attr_accessor :genres
+  extend Concerns::Findable
     @@all = []
     def initialize(name)
       @name = name
