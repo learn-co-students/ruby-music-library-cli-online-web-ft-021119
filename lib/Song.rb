@@ -5,17 +5,17 @@ class Song
   def initialize(name, artist = nil, genre = nil)
     @name = name
   #Genre=
-    if genre == nil
-      #do nothing
-    else
-      self.genre=(genre)
-    end
+    self.genre=(genre) if genre     # if genre == nil
+                                    #   #do nothing
+                                    # else
+                                    #   self.genre=(genre)
+                                    # end
   #Artist=
-    if artist == nil
-      #do nothing
-    else
-      self.artist=(artist)
-    end
+    self.artist=(artist) if artist  # if artist == nil
+                                    #   #do nothing
+                                    # else
+                                    #   self.artist=(artist)
+                                    # end
   end
 
   def self.create(name)
@@ -56,14 +56,30 @@ class Song
   end
 
   def self.new_from_filename(filename)
-    # binding.pry
-    song = Song.new(filename.split("-")[1].strip)
-    new_artist = Artist.new(filename.split("-")[0].strip)
-    new_artist.add_song(song)
-    new_artist.save
-    song
-    # binding.pry
+    name = filename.split("-")[1].strip
+    genre = filename.split("-")[2].strip.chomp(".mp3")
+    artist = filename.split("-")[0].strip
+
+    find_artist = Artist.find_or_create_by_name(artist)
+    find_genre = Genre.find_or_create_by_name(genre)
+    new_song = Song.new(name,find_artist,find_genre)
+
+  #Pre-refactoring:
+    # song = Song.new(filename.split("-")[1].strip)
+    # new_genre = Genre.new("dance")
+    # song.genre=(new_genre)
+    # new_genre.songs = song
+    # new_genre.save
+    # new_artist = Artist.new(filename.split("-")[0].strip)
+    # new_artist.add_song(song)
+    # new_artist.save
+    # song
   end
+
+  def self.create_from_filename(filename)
+    self.new_from_filename(filename).save
+  end
+
 
   def artist
     @artist
