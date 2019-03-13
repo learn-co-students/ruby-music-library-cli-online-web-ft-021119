@@ -53,4 +53,10 @@ class MusicLibraryController
     formatted
   end
 
+  def list_songs_by_artist
+    binding.pry
+    user_input = get.chomp
+
+  end
+
 end
