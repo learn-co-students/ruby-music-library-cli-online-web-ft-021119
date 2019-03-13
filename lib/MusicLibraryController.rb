@@ -54,8 +54,59 @@ class MusicLibraryController
   end
 
   def list_songs_by_artist
-    binding.pry
-    user_input = get.chomp
+    puts "Please enter the name of an artist:"
+    user_input = gets.chomp
+    # # binding.pry
+    # self.list_songs
+
+# Collect all of a certain artist's songs:
+    all_songs = Song.all
+    your_artists_songs = all_songs.select {|song|
+      if song.artist.name == user_input
+        song
+      end}
+# Sort the songs by their names:
+    sorted = your_artists_songs.sort_by { |song|
+              song.name}
+
+#Reformat songs using numbered list:
+      final = sorted.map.with_index {|song,index|
+        puts "#{index+1}. #{song.name} - #{song.genre.name}"      }
+      final
+  end
+
+  def list_songs_by_genre
+    puts "Please enter the name of a genre:"
+    user_input = gets.chomp
+    # # binding.pry
+    # self.list_songs
+
+# Collect all of a certain artist's songs:
+    all_songs = Song.all
+    your_genres_songs = all_songs.select {|song|
+      if song.genre.name == user_input
+        song
+      end}
+# Sort the songs by their names:
+    sorted = your_genres_songs.sort_by { |song|
+              song.name}
+
+#Reformat songs using numbered list:
+      final = sorted.map.with_index {|song,index|
+        puts "#{index+1}. #{song.artist.name} - #{song.name}"
+          }
+      final
+  end
+
+  def play_song
+    puts "Which song number would you like to play?"
+    user_input = gets.chomp
+binding.pry
+    self.list_songs.select {
+      puts "Playing #{song.name} by #{song.artist}"
+
+    }
+    end
 
   end
 
