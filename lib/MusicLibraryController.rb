@@ -21,9 +21,22 @@ class MusicLibraryController
     user_input = gets.chomp
       if user_input == "exit"
         return "Goodbye!"
+      elsif user_input == "list songs"
+        self.list_songs
+      elsif user_input == "list artists"
+        self.list_artists
+      elsif user_input == "list genres"
+        self.list_genres
+      elsif user_input == "list artist"
+        self.list_songs_by_artist
+      elsif user_input == "list genre"
+        self.list_songs_by_genre
+      elsif user_input == "play song"
+        self.play_song
       end
     end
   end
+
 
   def list_songs
 # Sorting songs by their names
@@ -100,12 +113,13 @@ class MusicLibraryController
 
   def play_song
     puts "Which song number would you like to play?"
-    user_input = gets.chomp
-binding.pry
-    self.list_songs.select {
-      puts "Playing #{song.name} by #{song.artist}"
-
-    }
+    user_input = gets.chomp.to_i
+# binding.pry
+    if user_input.between?(1,Song.all.length)
+      specific_song = Song.all.sort_by {|song| song.name}[user_input - 1]
+      puts "Playing #{specific_song.name} by #{specific_song.artist.name}"
+    else
+      #{do nothing}
     end
 
   end
